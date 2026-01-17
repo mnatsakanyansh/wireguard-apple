@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version: 6.2
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -12,15 +12,14 @@ let package = Package(
     products: [
         .library(name: "WireGuardKit", targets: ["WireGuardKit"])
     ],
-    dependencies: [],
     targets: [
         .target(
             name: "WireGuardKit",
-            dependencies: ["WireGuardKitGo", "WireGuardKitC"]
+            dependencies: ["WireGuardKitGo", "WireGuardKitC"],
+            swiftSettings: [.swiftLanguageMode(.v5)]
         ),
         .target(
             name: "WireGuardKitC",
-            dependencies: [],
             publicHeadersPath: "."
         ),
         .target(
