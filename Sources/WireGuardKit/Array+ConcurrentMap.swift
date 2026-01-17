@@ -18,7 +18,7 @@ extension Array {
         var result = [U?](repeating: nil, count: self.count)
         let resultQueue = DispatchQueue(label: "ConcurrentMapQueue")
 
-        let execute = queue?.sync ?? { $0() }
+        let execute: (() -> Void) -> Void = queue?.sync ?? { $0() }
 
         execute {
             DispatchQueue.concurrentPerform(iterations: self.count) { index in
